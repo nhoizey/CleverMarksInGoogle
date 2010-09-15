@@ -250,7 +250,6 @@ e&&e.document?e.document.compatMode==="CSS1Compat"&&e.document.documentElement["
     var currentItemCount = 0;
 	  jFeed.find('entry').each(function(i, el) {
 	  	var $this = $(el);
-	  	console.log(el);
 
       html += '<li class="'+(++currentItemCount % 2 ? 'odd' : 'even')+' item-'+currentItemCount+'">';
       html += '<img src="' + $this.find('link[rel=enclosure]').attr('href') + '" alt="" />';
