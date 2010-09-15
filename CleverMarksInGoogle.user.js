@@ -190,6 +190,9 @@ e&&e.document?e.document.compatMode==="CSS1Compat"&&e.document.documentElement["
     #CleverMarksInGoogle p { margin: 1em; }\
     #CleverMarksInGoogle ul { list-style: none; margin: 1em; padding: 0; }\
     #CleverMarksInGoogle li { margin: 0; padding: 0.5em; border-bottom: 1px solid #c9d7f1; text-align: center; }\
+    #CleverMarksInGoogle li:hover { background: #e5ecf9; }\
+    #CleverMarksInGoogle li a { display: block; }\
+    #CleverMarksInGoogle li a:hover { text-decoration: none; }\
     #CleverMarksInGoogle li img { margin: 0 0.5em 0 0; }\
     #CleverMarksInGoogle .credit { font-size: 0.8em; margin: 0 }\
   </style>');
@@ -248,13 +251,13 @@ e&&e.document?e.document.compatMode==="CSS1Compat"&&e.document.documentElement["
   
     var html = '<h4>' + feedTitle + '</h4><ul>';
     var currentItemCount = 0;
-	  jFeed.find('entry').each(function(i, el) {
+	  jFeed.find('entry').slice(10).each(function(i, el) {
 	  	var $this = $(el);
 
       html += '<li class="'+(++currentItemCount % 2 ? 'odd' : 'even')+' item-'+currentItemCount+'">';
-      html += '<img src="' + $this.find('link[rel=enclosure]').attr('href') + '" alt="" />';
-      html += '<p><a href="' + $this.find('link[rel=alternate]').attr('href') + '">' + $this.find('title').text() + '</a></p>';
-      html += '</li>';
+      html += '<a href="' + $this.find('link[rel=alternate]').attr('href') + '"><img src="' + $this.find('link[rel=enclosure]').attr('href') + '" alt="" />';
+      html += $this.find('title').text();
+      html += '</a></li>';
 	  });
 	  html += '</ul>';
 	  
@@ -270,5 +273,9 @@ e&&e.document?e.document.compatMode==="CSS1Compat"&&e.document.documentElement["
 	 */
 	//onload
 	executeSearch(unescape($('input[name=q]').attr('value')), parseFeed);
-	
+
+	//on Instant update
+	$(window).bind('hashchange', function(){
+		executeSearch(/[#\?&]q=([^&]+)/.exec(window.location.hash)[1], parseFeed);
+	});
 })(jQuery);
