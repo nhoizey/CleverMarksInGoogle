@@ -7,28 +7,17 @@
 //
 // Author
 // Nicolas Hoizey <nhoizey@clever-age.com>
+// Thomas Parisot <tparisot@clever-age.com>
 //
 // History
-// 0.9   2008-08-26   First release
-//
-// --------------------------------------------------------------------
-// This is a Greasemonkey user script.
-//
-// To install, you need Greasemonkey: http://greasemonkey.mozdev.org/
-// Then restart Firefox and revisit this script.
-// Under Tools, there will be a new menu item to "Install User Script".
-// Accept the default configuration and install.
-//
-// To uninstall, go to Tools/Manage User Scripts,
-// select "CleverMarksInGoogle", and click Uninstall.
-// --------------------------------------------------------------------
+// 1.0	2010-09-15	Speed improvements, Chrome compatible
+// 0.9  2008-08-26  First release
 //
 // ==UserScript==
 // @name          CleverMarksInGoogle
 // @namespace     http://www.clever-age.com/
 // @description   adds Clever Marks search into Google
 // @include       http://*.google.*/*
-// @require	      http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js
 // ==/UserScript==
 
 /*!
