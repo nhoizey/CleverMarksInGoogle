@@ -178,14 +178,6 @@ e&&e.document?e.document.compatMode==="CSS1Compat"&&e.document.documentElement["
 (function($) {
   // Some constants
 	const CleverMarksInGoogleVersion = '1.0';
-	const waitingImg = '<img src="data:image/gif;base64,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" width="16" height="16" alt="..." border="0" />';
-
-	// Get the query value
-  var query = unescape($('input[name=q]').attr('value'));
-
-	// Create the results container
-  var marksContainer = window.document.createElement('div');
-  marksContainer.id = 'CleverMarksInGoogle';
 
 	// Add some style to it
   $('head').append('<style type="text/css" media="all">\
@@ -193,48 +185,59 @@ e&&e.document?e.document.compatMode==="CSS1Compat"&&e.document.documentElement["
     #CleverMarksInGoogle { border-bottom: 1px solid #c9d7f1; padding: 0 0 9px 0; margin: 0 4px 0 0; }\
     #CleverMarksInGoogle .mitem { font-weight: bold; }\
     #CleverMarksInGoogle .micon { background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9oJDwoCJCmg5EsAAAQUSURBVDjLdZRLbFRlGIaf/9zP6bSdaTvtKfYyU4tIEaGCRExI1ZDoQheSuPESFxJZqcHEtYkr4gIvO8PCEE2MihpYGUKQBBQaK9GW2Gqg06EttEBvzsyZnst/fhd0lIW+++/J9755v09wj0qlEsViEYDZ2dlh27Z3KKUGAAMoSymvjF66dPH5AwdSgI9mZ9o++1kdWY4MuSdff1c0QDMzMxQKBWZnZ7O2bZdN02yRUipACAEgEEKQSElGRPv3fnFtMVjXJvQtD6itzprY2hq9oQGUy2UKhQLz8/OHPc9b0XW9RUqJEEKAQEdw8nqdXLOJQJBY3pnJiVsT88s1Fqeu8mBOsrQuTmgA/f39zM3NHXRd96hSCjbWUUrRZMKRqYivbyyx+/0xgkhydbGGJQSxZdPWqot6nK58MjK0oG3kY7qu+3GapmrDE0opDF3gmIKT8wnDnRbjqcnB4+N8//sSrqUTK52hbodUiQ/ZCBZd148BbgMEkDE0vpuvMHltlSe6Opmr6rgZk1+urzB+rkzo2aDBYN4iTtUHANro6Khp2/arasOfUgpbE4QCvgorvPfDIuNX5vijarFzk0WgGSiZUm1qoqNFp9nWk6ezTgCg+b4/qGkagFBKoQvBN3NrnCoHeJbFw8Pt/DZ9mxouw702yd1ASQ2d+/M2OU0zdrUYwwCGaZrZe7umCfjy8ioZX6fdMYky3ShnhTiIaOk3aVMJsWlAJOnIGmxusknSdAAY05RSUQMkhCBRcOqFImfHK3Q1axTcgNxgP8H8ApM3EpJaSOC5IKEtozPc6gCsA2hhGN5sxNXILIoUb+/s4PRUld0dIe1ZG68rx49jd9AMjdC2cJp0+jImvmOgYAxAGxgYuBHH8Zpo9FwIgkTyzuNd/HRljWqs8Wiuxrrhkf5VI3YsQLCz12FrxiZR6o5uGDdLpRIaQBiGBxpbNYBhnHLmlS0cP79MT6vgoZaA9se2E3oeSMlm3+ahrMtKEJ1eW11VxWIRbXp6mr6+vrNpml6+t2f1JGVfr0tLlHLhWp2hXIxMJB2bezETSX/e5vLUUux3+y9t27aNhk0A8vn8LillpdE3gSCIFN++PMiZ0RV0XTDSVcNxPfqLedaDmNc/n7wAUL09dxfW+BgLCwsEQXBfkiRnhRAIgZKp4pFNHs9uz/Hp+SXyHvQ66xjNWc5Nh3iO/iRAJt/zL6xQKOD7PpqmVXzf31+pVF5M03RCCLFcrafJiG/LxbWUP2/F7OmMkGnKHa0dYenkD5967Z9q8T8qlUqYpqn19PSkmUMnfpX57I66MHnrmU5ViYW4cKtJhQuLojJZvqS71t7bR5+7e+j/pY2PmwJYjjVCEKT1bNvQxenavqe2ZA41m/K83tN9rPzm7ouNmb8BKivI6qsGtEEAAAAASUVORK5CYII=") no-repeat; }\
+    #CleverMarksInGoogle .loading-message { padding-left: 23px; background: url("data:image/gif;base64,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") no-repeat left center; }\
     #CleverMarksInGoogle h4 { margin: 0; padding: 0.3em; font-weight: bold; }\
     #CleverMarksInGoogle p { margin: 1em; }\
     #CleverMarksInGoogle ul { list-style: none; margin: 1em; padding: 0; }\
-    #CleverMarksInGoogle li { margin: 0; padding: 0.5em; border-bottom: 1px dotted #46a; }\
-    #CleverMarksInGoogle li:after { content: "."; display: block; height: 0; clear: left; visibility: hidden; }\
-    #CleverMarksInGoogle li img { float: left; margin: 0 0.5em 0 0; }\
-    #CleverMarksInGoogle p.credit { float: right; font-size: 0.8em; }\
+    #CleverMarksInGoogle li { margin: 0; padding: 0.5em; border-bottom: 1px solid #c9d7f1; text-align: center; }\
+    #CleverMarksInGoogle li img { margin: 0 0.5em 0 0; }\
+    #CleverMarksInGoogle .credit { font-size: 0.8em; margin: 0 }\
   </style>');
-            
-	var msg = '<h3 class="mitem"><span class="micon"></span> <a href="http://www.clever-age.com/veille/clever-marks/">Clever Marks</a></h3>';
 
 	// Show the loading message and append it to the GUI
-	var html = msg + '<p>' + waitingImg + ' Loading links with these tags: <strong>' + query + '</strong>...</p>';
-  $(marksContainer).html(html).insertAfter('#ms');
-			
-	// Translate the query string
-  while (query.match(/"([^"]+)\s([^"]+)"/g)) {
-    query = query.replace(/"([^"]+)\s([^"]+)"/g, "\"$1#CMiG#$2\"");
-  }
-  query = query.replace(/"/g, "");
-  query = query.replace(/ /g, ",");
-  query = query.replace(/#CMiG#/g, " ");
+  function $buildGui(){
+    var marksContainer = window.document.createElement('div');
+    marksContainer.id = 'CleverMarksInGoogle';
 
-	// Construct the feed url
-	// http://api.clever-age.com/rss/tag/symfony,framework
-	var url = 'http://api.clever-age.com/rss/tag/' + query;
+  	var html = '';
+  	html += '<h3 class="mitem"><span class="micon"></span> <a href="http://www.clever-age.com/veille/clever-marks/">Clever Marks</a></h3>';
+  	html += '<div id="CleverMarksInGoogleResponse"></div>';
+  	html += '<p class="credit"><a href="http://github.com/nhoizey/CleverMarksInGoogle">CleverMarksInGoogle</a> v' + CleverMarksInGoogleVersion + '</p>';
+    
+  	return $(marksContainer).html(html)
+  };
 
-  // Request the API for the links
-  GM_xmlhttpRequest({
-    method: 'GET',
-    url: url,
-    headers: {
-      'User-Agent': 'CleverMarksInGoogle v' + CleverMarksInGoogleVersion,
-      'Accept': 'application/xml'
-    },
-    onload: parseFeed,
-    onerror: function(responseDetails) {
-      // Show the error message
-      var html = msg + '<p>Could not load Clever Marks feed</p>';
-      $('div#CleverMarksInGoogle').html(html);
+  /**
+   * 
+   * http://api.clever-age.com/rss/tag/symfony,framework
+   */
+  function executeSearch(query, callback) {
+  	$buildGui().insertAfter('#ms');
+  	$('#CleverMarksInGoogleResponse').html('<p class="loading-message">Loading links with these tags: <strong>' + query + '</strong>.</p>');
+
+  	// Translate the query string
+    while (query.match(/"([^"]+)\s([^"]+)"/g)) {
+      query = query.replace(/"([^"]+)\s([^"]+)"/g, "\"$1#CMiG#$2\"");
     }
-  });
+    query = query.replace(/"/g, "");
+    query = query.replace(/ /g, ",");
+    query = query.replace(/#CMiG#/g, " ");
+
+  	var url = 'http://api.clever-age.com/rss/tag/' + query;
+  	
+    GM_xmlhttpRequest({
+      method: 'GET',
+      url: url,
+      headers: {
+        'User-Agent': 'CleverMarksInGoogle v' + CleverMarksInGoogleVersion,
+        'Accept': 'application/xml'
+      },
+      onload: callback,
+      onerror: function(responseDetails) {
+        $('#CleverMarksInGoogleResponse').html('<p>Could not load Clever Marks feed</p>');
+      }
+    });
+  }
 
 	function parseFeed(responseDetails) {
 	  // Get the feed as a jQuery object
@@ -243,27 +246,30 @@ e&&e.document?e.document.compatMode==="CSS1Compat"&&e.document.documentElement["
     // Get the feed title
     var feedTitle = $('title:first', jFeed).text();
   
-    var html = msg + '<h4>' + feedTitle + '</h4><ul>';
+    var html = '<h4>' + feedTitle + '</h4><ul>';
     var currentItemCount = 0;
-	  jFeed.find('entry').each(function() {
-      // Create current item data
-      if (currentItemCount++ % 2 == 0) {
-        html += '<li style="background: #e5ecf9;">';
-      } else {
-        html += '<li>';
-      }
-      html += '<img src="' + $(this).find('link[rel=enclosure]').attr('href') + '" />';
-      html += '<p><a href="' + $(this).find('link[rel=alternate]').attr('href') + '">' + $(this).find('title').text() + '</a></p>';
+	  jFeed.find('entry').each(function(i, el) {
+	  	var $this = $(el);
+	  	console.log(el);
+
+      html += '<li class="'+(++currentItemCount % 2 ? 'odd' : 'even')+' item-'+currentItemCount+'">';
+      html += '<img src="' + $this.find('link[rel=enclosure]').attr('href') + '" alt="" />';
+      html += '<p><a href="' + $this.find('link[rel=alternate]').attr('href') + '">' + $this.find('title').text() + '</a></p>';
       html += '</li>';
 	  });
-	  if (currentItemCount > 0) {
-      html += '</ul>';
-      html += '<p class="credit">Enhanced by <a href="https://intranet.clever-age.net/portal/mark">CleverMarksInGoogle</a> v' + CleverMarksInGoogleVersion + '</p>';
-    } else {
-      // Show error
-      var html = msg + '<p>No related links!</p>';
+	  html += '</ul>';
+	  
+	  if (!currentItemCount) {
+      html += '<p>No related links!</p>';
     }
 	  
-    $('#CleverMarksInGoogle').html(html);
+    $('#CleverMarksInGoogleResponse').html(html);
 	}
+	
+	/*
+	 * Executes the search
+	 */
+	//onload
+	executeSearch(unescape($('input[name=q]').attr('value')), parseFeed);
+	
 })(jQuery);
