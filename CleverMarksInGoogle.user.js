@@ -186,8 +186,8 @@ f.top,left:d.left-f.left}},offsetParent:function(){return this.map(function(){fo
 "pageXOffset"]:c.support.boxModel&&j.document.documentElement[d]||j.document.body[d]:e[d]}});c.each(["Height","Width"],function(a,b){var d=b.toLowerCase();c.fn["inner"+b]=function(){return this[0]?c.css(this[0],d,false,"padding"):null};c.fn["outer"+b]=function(f){return this[0]?c.css(this[0],d,false,f?"margin":"border"):null};c.fn[d]=function(f){var e=this[0];if(!e)return f==null?null:this;if(c.isFunction(f))return this.each(function(j){var i=c(this);i[d](f.call(this,j,i[d]()))});return"scrollTo"in
 e&&e.document?e.document.compatMode==="CSS1Compat"&&e.document.documentElement["client"+b]||e.document.body["client"+b]:e.nodeType===9?Math.max(e.documentElement["client"+b],e.body["scroll"+b],e.documentElement["scroll"+b],e.body["offset"+b],e.documentElement["offset"+b]):f===w?c.css(e,d):this.css(d,typeof f==="string"?f:f+"px")}});A.jQuery=A.$=c})(window);
 
-(function() {
-	$(document).ready(function() {
+(function($) {
+	$(function() {
 	  // Some constants
 		const CleverMarksInGoogleVersion = '0.9';
 		const waitingImg = '<img src="data:image/gif;base64,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" width="16" height="16" alt="..." border="0" />';
@@ -196,29 +196,27 @@ e&&e.document?e.document.compatMode==="CSS1Compat"&&e.document.documentElement["
 	  var query = unescape($('input[@name=q]').attr('value'));
 
 		// Create the results container
-		$('div#res').before('<div id="CleverMarksInGoogle"></div>');
+		$('#res').before('<div id="CleverMarksInGoogle"></div>');
 
 		// Add some style to it
-	  $('head').append('\
-	    <style>\
+	  $('head').append('<style type="text/css" media="all">\
 	    #mbEnd { display: none; }\
-	    div#CleverMarksInGoogle { float: right; width: 300px; font-size: 0.9em; margin: 1em 0; padding: 0; border: 1px dotted #46a;background: white; }\
-	    div#CleverMarksInGoogle h3 { margin: 0; padding: 0.3em; font-weight: bold; background: #e5ecf9; }\
-	    div#CleverMarksInGoogle h4 { margin: 0; padding: 0.3em; font-weight: bold; }\
-	    div#CleverMarksInGoogle p { margin: 1em; }\
-	    div#CleverMarksInGoogle ul { list-style: none; margin: 1em; padding: 0; }\
-	    div#CleverMarksInGoogle li { margin: 0; padding: 0.5em; border-bottom: 1px dotted #46a; }\
-	    div#CleverMarksInGoogle li:after { content: "."; display: block; height: 0; clear: left; visibility: hidden; }\
-	    div#CleverMarksInGoogle li img { float: left; margin: 0 0.5em 0 0; }\
-	    div#CleverMarksInGoogle p.credit { float: right; font-size: 0.8em; }\
-	    </style>'
-	  );
+	    #CleverMarksInGoogle { float: right; width: 300px; font-size: 0.9em; margin: 1em 0; padding: 0; border: 1px dotted #46a;background: white; }\
+	    #CleverMarksInGoogle h3 { margin: 0; padding: 0.3em; font-weight: bold; background: #e5ecf9; }\
+	    #CleverMarksInGoogle h4 { margin: 0; padding: 0.3em; font-weight: bold; }\
+	    #CleverMarksInGoogle p { margin: 1em; }\
+	    #CleverMarksInGoogle ul { list-style: none; margin: 1em; padding: 0; }\
+	    #CleverMarksInGoogle li { margin: 0; padding: 0.5em; border-bottom: 1px dotted #46a; }\
+	    #CleverMarksInGoogle li:after { content: "."; display: block; height: 0; clear: left; visibility: hidden; }\
+	    #CleverMarksInGoogle li img { float: left; margin: 0 0.5em 0 0; }\
+	    #CleverMarksInGoogle p.credit { float: right; font-size: 0.8em; }\
+	  </style>');
 	            
 		var msg = '<h3>Related <a href="http://www.clever-age.com/veille/clever-marks/">Clever Marks</a></h3>';
 	
 		// Show the loading message
 		var html = msg + '<p>' + waitingImg + ' Loading links with these tags: <strong>' + query + '</strong>...</p>';
-	  $('div#CleverMarksInGoogle').html(html);
+	  $('#CleverMarksInGoogle').html(html);
 				
 		// Translate the query string
 	  while (query.match(/"([^"]+)\s([^"]+)"/g)) {
@@ -240,15 +238,14 @@ e&&e.document?e.document.compatMode==="CSS1Compat"&&e.document.documentElement["
 	      'User-Agent': 'CleverMarksInGoogle v' + CleverMarksInGoogleVersion,
 	      'Accept': 'application/xml'
 	    },
-	    onload: function(responseDetails) {
-	      parseFeed(responseDetails);
-	    },
+	    onload: parseFeed,
 	    onerror: function(responseDetails) {
 	      // Show the error message
 	      var html = msg + '<p>Could not load Clever Marks feed</p>';
 	      $('div#CleverMarksInGoogle').html(html);
 	    }
 	  });
+
 		function parseFeed(responseDetails) {
 		  // Get the feed as a jQuery object
       var jFeed = $(responseDetails.responseText);
@@ -276,7 +273,8 @@ e&&e.document?e.document.compatMode==="CSS1Compat"&&e.document.documentElement["
         // Show error
         var html = msg + '<p>No related links!</p>';
 	    }
-      $('div#CleverMarksInGoogle').html(html);
+		  
+      $('#CleverMarksInGoogle').html(html);
 		}
 	});
-})();
+})(jQuery);
