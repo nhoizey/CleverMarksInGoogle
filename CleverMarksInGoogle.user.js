@@ -20,7 +20,7 @@
 // @name          CleverMarksInGoogle
 // @namespace     com.clever-age.clevermarks
 // @description   adds CleverMarks search into Google
-// @version       0.12
+// @version       0.13
 // @include       http://*.google.*/*
 // @include       https://*.google.*/*
 // @require	      https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
@@ -54,7 +54,7 @@
 
 	  function handleSearch() {
       // Get the query value
-      queryField = document.querySelector('form[role=search]').q.value;
+      queryStr = document.querySelector('form[role=search] input[name=q]').value;
       
       if (queryStr === undefined) {
         var html = msg + '<p>No search to perform.</p>';
@@ -126,6 +126,6 @@
       $('#CleverMarksInGoogle').html(html);
 		}
 		
-		$(document.querySelector('form[role=search]').q).on('change', handleSearch);
+		$(document.querySelector('form[role=search] input[name=q]')).on('change', handleSearch);
 		handleSearch();
 })();
