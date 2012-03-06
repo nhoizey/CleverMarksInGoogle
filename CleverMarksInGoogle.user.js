@@ -90,6 +90,8 @@
   	    }
   	  });
       queryStr = document.querySelector('form[role=search]').q.value;
+      if (queryStr === undefined) {
+    	}
 	  }
 	
 		function parseFeed(responseDetails) {
