@@ -37,7 +37,7 @@
 		// Add some style to it
 	  $('head').append('\
 	    <style>\
-	    #CleverMarksInGoogle { position: absolute; right: 10px; top: 180px; width: 320px; font-size: 1em; margin: 1em 0; padding: 0; border: 1px dotted #46a;background: white; }\
+	    #CleverMarksInGoogle { position: absolute; right: 10px; top: 180px; width: 320px; font-size: 1em; margin: 1em 0; padding: 0; border: 1px solid #46a;background: white; }\
 	    #CleverMarksInGoogle h3 { margin: 0; padding: 0.3em; font-weight: bold; background: #e5ecf9; }\
 	    #CleverMarksInGoogle h4 { margin: 0; padding: 0.3em; font-weight: bold; }\
 	    #CleverMarksInGoogle p { margin: 5px; }\
