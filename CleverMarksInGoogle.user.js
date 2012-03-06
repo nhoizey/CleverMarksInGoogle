@@ -115,7 +115,7 @@
 	      html += '</ul>';
 	    } else {
         // Show error
-        var html = msg + '<p>No related links!</p>';
+        html = msg + '<p>No related links!</p>';
 	    }
       $('#CleverMarksInGoogle').html(html);
 		}
