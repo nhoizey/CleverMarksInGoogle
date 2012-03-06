@@ -120,8 +120,8 @@
       $('#CleverMarksInGoogle').html(html);
 		}
 		
-		$('#lst-ib').on('change', handleSearch);
 		
+		$(document.querySelector('form[role=search]').q).on('change', handleSearch);
 		handleSearch();
 	});
 })();
