@@ -57,7 +57,6 @@
       $('#CleverMarksInGoogle').html(html);
 				
       // Get the query value
-      var query = document.getElementById('lst-ib').value;
       
   		// Translate the query string
   	  while (query.match(/"([^"]+)\s([^"]+)"/g)) {
@@ -88,6 +87,7 @@
   	      $('#CleverMarksInGoogle').html(html);
   	    }
   	  });
+      queryStr = document.querySelector('form[role=search]').q.value;
 	  }
 	
 		function parseFeed(responseDetails) {
