@@ -23,7 +23,7 @@
 // @version       0.11
 // @include       http://*.google.*/*
 // @include       https://*.google.*/*
-// @require	      //ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
+// @require	      https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
 // ==/UserScript==
 
 (function() {
