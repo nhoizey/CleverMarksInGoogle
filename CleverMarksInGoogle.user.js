@@ -20,9 +20,9 @@
 // @name          CleverMarksInGoogle
 // @namespace     com.clever-age.clevermarks
 // @description   adds CleverMarks search into Google
-// @version       0.13
-// @include       http://*.google.*/*
-// @include       https://*.google.*/*
+// @version       0.14
+// @include       http://www.google.*/*
+// @include       https://www.google.*/*
 // @require	      https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
 // ==/UserScript==
 
